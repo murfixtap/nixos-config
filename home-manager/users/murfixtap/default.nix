@@ -16,6 +16,11 @@
     username = user;
     homeDirectory = "/home/${user}";
     stateVersion = stateVersion;
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      TERMINAL = "kitty";
+    };
   };
 
   home.packages = with pkgs; [
