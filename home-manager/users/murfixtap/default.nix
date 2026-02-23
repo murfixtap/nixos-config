@@ -26,6 +26,7 @@
     p7zip
     ripgrep
     btop
+    repomix
     wiremix
     ayugram-desktop
     bitwarden-desktop
