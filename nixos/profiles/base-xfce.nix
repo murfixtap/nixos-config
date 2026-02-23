@@ -16,10 +16,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    kitty
-    neovim
-    firefox
-    git
     curl
     wget
     htop
