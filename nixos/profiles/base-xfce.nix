@@ -7,6 +7,7 @@
     ../modules/core/env.nix
     ../modules/core/fonts.nix
     ../modules/core/networking.nix
+    ../modules/core/nh.nix
     ../modules/core/nix.nix
     ../modules/core/timezone.nix
     ../modules/core/user.nix
