@@ -19,6 +19,8 @@
   };
 
   home.packages = with pkgs; [
+    nixd
+    nil
     bat
     lsd
     zip
