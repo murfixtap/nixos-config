@@ -2,7 +2,7 @@
 {
   imports = [
     ../../modules/editors/kitty.nix
-    ../../modules/editors/neovim.nix
+    ../../modules/editors/nixvim.nix
     ../../modules/editors/zed.nix
     ../../modules/programs/firefox.nix
     ../../modules/programs/git.nix
