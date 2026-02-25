@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, user, ... }: {
   imports = [
     inputs.nixvim.homeModules.nixvim
   ];
@@ -67,6 +67,7 @@
     };
 
     keymaps = [
+      # write and quit
       {
         mode = "n";
         key = "<leader>w";
@@ -79,6 +80,255 @@
         action = ":q<CR>";
         options.silent = false;
       }
+
+      #LSP
+      {
+        mode = "n";
+        key = "gd";
+        action = "<cmd>lua vim.lsp.buf.definition()<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "gr";
+        action = "<cmd>lua vim.lsp.buf.references()<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "K";
+        action = "<cmd>lua vim.lsp.buf.hover()<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>rn";
+        action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+        options.silent = true;
+      }
+
+      #telescope
+      {
+        mode = "n";
+        key = "<leader>ff";
+        action = "<cmd>Telescope find_files<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>fg";
+        action = "<cmd>Telescope live_grep<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>fb";
+        action = "<cmd>Telescope buffers<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<leader>fh";
+        action = "<cmd>Telescope help_tags<CR>";
+        options.silent = true;
+      }
+
+      #nvim tree
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>NvimTreeToggle<CR>";
+        options.silent = true;
+      }
+
+      #gitsigns
+      {
+        mode = "n";
+        key = "<leader>lp";
+        action = "<cmd>lua require('gitsigns').preview_hunk()<CR>";
+        options.silent = true;
+      }
+
+      #lazygit
+      {
+        mode = "n";
+        key = "<leader>lg";
+        action = "<cmd>LazyGit<CR>";
+        options.silent = true;
+      }
+
+      #bufferline
+      {
+        mode = "n";
+        key = "<leader>bn";
+        action = "<cmd>enew<CR>";
+        options.silent = true;
+      }
+      {
+        mode = "n";
+        key = "<S-l>";
+        action = "<cmd>BufferLineCycleNext<CR>";
+      }
+      {
+        mode = "n";
+        key = "<S-h>";
+        action = "<cmd>BufferLineCyclePrev<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>x";
+        action = "<cmd>bdelete<CR>";
+      }
     ];
+
+    plugins = {
+      lsp = {
+        enable = true;
+        servers = {
+          nixd = {
+            enable = true;
+            settings = {
+              nixpkgs = {
+                expr = "import <nixpkgs> {}";
+              };
+              options = {
+                nixos.expr = "(builtins.getFlake \"/home/${user}/nixos-config\").nixosConfigurations.luna.options";
+              };
+            };
+          };
+        };
+      };
+
+      cmp = {
+        enable = true;
+        autoEnableSources = true;
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          mapping = {
+            "<Tab>" = "cmp.mapping.select_next_item()";
+            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+          };
+        };
+      };
+      cmp-nvim-lsp.enable = true;
+
+      conform-nvim = {
+        enable = true;
+        settings = {
+          formatters_by_ft = {
+            nix = [ "alejandra" ]; # or "nixpkgs-fmt"
+          };
+          format_on_save = {
+            lsp_fallback = true;
+            timeout_ms = 500;
+          };
+        };
+      };
+
+      telescope = {
+        enable = true;
+        extensions."fzf-native" = {
+          enable = true;
+          settings = {
+            fuzzy = true;
+            override_file_sorter = true;
+            override_generic_sorter = true;
+            case_mode = "smart_case";
+          };
+        };
+
+        settings = {
+          defaults = {
+            layout_config = { prompt_position = "top"; };
+            sorting_strategy = "ascending";
+          };
+          pickers.find_files.hidden = true;
+        };
+      };
+
+      nvim-tree = {
+        enable = true;
+        openOnSetup = false;
+        settings = {
+          filters.dotfiles = false;
+        };
+      };
+
+      gitsigns = {
+        enable = true;
+        settings = {
+          attach_to_untracked = true;
+          current_line_blame = true;
+          current_line_blame_opts = {
+            delay = 0;
+            virt_text_pos = "eol";
+          };
+        };
+      };
+
+      lazygit = {
+        enable = true;
+        settings = {
+          floating_window_winblend = 0;
+          floating_window_scaling_factor = 0.9;
+        };
+      };
+
+      lualine = {
+        enable = true;
+        settings.options = {
+          theme = "dracula";
+          icons_enabled = true;
+        };
+      };
+
+      bufferline = {
+        enable = true;
+        settings.options = {
+          always_show_bufferline = true;
+          offsets = [
+            {
+              filetype = "NvimTree";
+              text = "File Explorer";
+              highlight = "Directory";
+              separator = true;
+            }
+          ];
+        };
+      };
+
+      dashboard = {
+        enable = true;
+        settings = {
+          theme = "doom";
+          config = {
+            header = [
+              "┌──────────────────────────────┐"
+              "│   Welcome back, murfixtap!   │"
+              "└──────────────────────────────┘"
+            ];
+            center = [
+              { icon = " "; desc = "Find file"; key = "f"; action = "Telescope find_files"; }
+              { icon = " "; desc = "Live grep"; key = "g"; action = "Telescope live_grep"; }
+              { icon = " "; desc = "File tree"; key = "e"; action = "NvimTreeToggle"; }
+              { icon = "󰈆 "; desc = "Quit";      key = "q"; action = "qa"; }
+            ];
+            footer = [ "Tip: press ? for which-key" ];
+          };
+        };
+      };
+
+      web-devicons.enable = true;
+    };
+
+    colorschemes.dracula-nvim = {
+      enable = true;
+      settings.style = "dracula";
+    };
   };
 }
