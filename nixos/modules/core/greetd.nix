@@ -2,7 +2,7 @@
 let
   loginWallpaper = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/x6/wallhaven-x6x3gz.png";
-    sha256 = pkgs.lib.fakeSha256;
+    sha256 = "sha256-Yvtnxaj32YXpUkXQKF1VNcApQf0v3JXGp9TNAsoJmbM=";
   };
 in
 {
