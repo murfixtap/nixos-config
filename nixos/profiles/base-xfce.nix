@@ -4,7 +4,6 @@
     ../modules/desktop/xfce.nix
     ../modules/core/audio.nix
     ../modules/core/boot.nix
-    ../modules/core/env.nix
     ../modules/core/firewall.nix
     ../modules/core/fonts.nix
     ../modules/core/networking.nix
@@ -16,9 +15,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    curl
-    wget
-    htop
+    xfce4-clipman-plugin
+    xclip
   ];
 
   nixpkgs.config.allowUnfree = true;
