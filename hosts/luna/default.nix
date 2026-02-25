@@ -1,7 +1,7 @@
 { hostname, stateVersion, ... }:
 {
   imports = [
-    ../../nixos/profiles/base-xfce.nix
+    ../../nixos/profiles/workstation.nix
     ./hardware-configuration.nix
     ./disks.nix
   ];
