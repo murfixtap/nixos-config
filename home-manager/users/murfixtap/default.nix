@@ -1,6 +1,13 @@
-{ pkgs, user, stateVersion, ... }:
+{ config, pkgs, user, stateVersion, ...}:
+let
+  screenshotsPath = "${config.xdg.userDirs.pictures}/screenshots";
+in
 {
   imports = [
+    ../../modules/desktop/hyprland.nix
+    ../../modules/desktop/mako.nix
+    ../../modules/desktop/waybar.nix
+    ../../modules/desktop/wofi.nix
     ../../modules/editors/kitty.nix
     ../../modules/editors/nixvim.nix
     ../../modules/editors/zed.nix
@@ -17,22 +24,46 @@
     homeDirectory = "/home/${user}";
     stateVersion = stateVersion;
 
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
     sessionVariables = {
       EDITOR = "nvim";
       TERMINAL = "kitty";
+      XDG_BIN_HOME = "$HOME/.local/bin";
+      XDG_SCREENSHOTS_DIR = screenshotsPath;
+      HYPRSHOT_DIR = screenshotsPath;
     };
+  };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+
+    documents = "$HOME/Documents";
+    download = "$HOME/Downloads";
+    desktop = "$HOME/Desktop";
+    music = "$HOME/Music";
+    pictures = "$HOME/Pictures";
+    videos = "$HOME/Videos";
+    templates = "$HOME/Templates";
+    publicShare = "$HOME/Public";
   };
 
   home.packages = with pkgs; [
     nixd
-    nil
+    alejandra
     bat
     lsd
     zip
     unzip
     p7zip
     ripgrep
+    htop
     btop
+    curl
+    wget
     repomix
     wiremix
     ayugram-desktop
