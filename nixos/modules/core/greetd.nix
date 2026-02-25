@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   loginWallpaper = pkgs.fetchurl {
     url = "https://w.wallhaven.cc/full/x6/wallhaven-x6x3gz.png";
     sha256 = "sha256-Yvtnxaj32YXpUkXQKF1VNcApQf0v3JXGp9TNAsoJmbM=";
   };
-in
-{
+in {
   programs.regreet = {
     enable = true;
     settings = {
@@ -20,7 +18,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.regreet}/bin/regreet";
+        command = "${pkgs.cage}/bin/cage -s -- ${pkgs.regreet}/bin/regreet";
         user = "greeter";
       };
     };
