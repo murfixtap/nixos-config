@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ../modules/desktop/hyprland.nix
     ../modules/core/audio.nix

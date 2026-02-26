@@ -1,4 +1,8 @@
-{ inputs, user, ... }: {
+{
+  inputs,
+  user,
+  ...
+}: {
   imports = [
     inputs.nixvim.homeModules.nixvim
   ];
@@ -204,9 +208,9 @@
         autoEnableSources = true;
         settings = {
           sources = [
-            { name = "nvim_lsp"; }
-            { name = "path"; }
-            { name = "buffer"; }
+            {name = "nvim_lsp";}
+            {name = "path";}
+            {name = "buffer";}
           ];
           mapping = {
             "<Tab>" = "cmp.mapping.select_next_item()";
@@ -221,7 +225,7 @@
         enable = true;
         settings = {
           formatters_by_ft = {
-            nix = [ "alejandra" ]; # or "nixpkgs-fmt"
+            nix = ["alejandra"]; # or "nixpkgs-fmt"
           };
           format_on_save = {
             lsp_fallback = true;
@@ -244,7 +248,7 @@
 
         settings = {
           defaults = {
-            layout_config = { prompt_position = "top"; };
+            layout_config = {prompt_position = "top";};
             sorting_strategy = "ascending";
           };
           pickers.find_files.hidden = true;
@@ -313,12 +317,32 @@
               "└──────────────────────────────┘"
             ];
             center = [
-              { icon = " "; desc = "Find file"; key = "f"; action = "Telescope find_files"; }
-              { icon = " "; desc = "Live grep"; key = "g"; action = "Telescope live_grep"; }
-              { icon = " "; desc = "File tree"; key = "e"; action = "NvimTreeToggle"; }
-              { icon = "󰈆 "; desc = "Quit";      key = "q"; action = "qa"; }
+              {
+                icon = " ";
+                desc = "Find file";
+                key = "f";
+                action = "Telescope find_files";
+              }
+              {
+                icon = " ";
+                desc = "Live grep";
+                key = "g";
+                action = "Telescope live_grep";
+              }
+              {
+                icon = " ";
+                desc = "File tree";
+                key = "e";
+                action = "NvimTreeToggle";
+              }
+              {
+                icon = "󰈆 ";
+                desc = "Quit";
+                key = "q";
+                action = "qa";
+              }
             ];
-            footer = [ "Tip: press ? for which-key" ];
+            footer = ["Tip: press ? for which-key"];
           };
         };
       };

@@ -1,5 +1,8 @@
-{ hostname, stateVersion, ... }:
 {
+  hostname,
+  stateVersion,
+  ...
+}: {
   imports = [
     ../../nixos/profiles/workstation.nix
     ./hardware-configuration.nix

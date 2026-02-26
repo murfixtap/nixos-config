@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     jetbrains-mono
     nerd-fonts.jetbrains-mono
@@ -11,10 +10,10 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font" ];
-      sansSerif = [ "Noto Sans" ];
-      serif = [ "Noto Serif" ];
-      emoji = [ "Noto Emoji" ];
+      monospace = ["JetBrainsMono Nerd Font"];
+      sansSerif = ["Noto Sans"];
+      serif = ["Noto Serif"];
+      emoji = ["Noto Emoji"];
     };
   };
 }

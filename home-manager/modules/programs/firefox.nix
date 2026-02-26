@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   lock-false = {
     Value = false;
     Status = "locked";
@@ -8,8 +7,7 @@ let
     Value = true;
     Status = "locked";
   };
-in
-{
+in {
   programs.firefox = {
     enable = true;
     languagePacks = [
@@ -129,7 +127,7 @@ in
           }
         ];
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = [ "@np" ];
+        definedAliases = ["@np"];
       };
     };
   };

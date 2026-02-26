@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -19,7 +19,6 @@
         "XDG_SESSION_DESKTOP,Hyprland"
         "QT_QPA_PLATFORM,wayland"
       ];
-
 
       monitor = [
         "HDMI-A-1,1920x1080@60,0x0,1"
@@ -95,65 +94,71 @@
         "10, monitor:DVI-D-1"
       ];
 
-      bind = [
-        # General
-        "$mainMod, Return, exec, uwsm app -- $terminal"
-        "$mainMod, E, exec, uwsm app -- $terminal -e $fileManager"
-        "$mainMod, R, exec, uwsm app -- $menu"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, F, fullscreen,"
-        "$mainMod, Q, killactive,"
-        "$mainMod SHIFT, Q, exit,"
-        "$mainMod ALT, P, pseudo,"
-        "$mainMod ALT, J, togglesplit,"
+      bind =
+        [
+          # General
+          "$mainMod, Return, exec, uwsm app -- $terminal"
+          "$mainMod, E, exec, uwsm app -- $terminal -e $fileManager"
+          "$mainMod, R, exec, uwsm app -- $menu"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, F, fullscreen,"
+          "$mainMod, Q, killactive,"
+          "$mainMod SHIFT, Q, exit,"
+          "$mainMod ALT, P, pseudo,"
+          "$mainMod ALT, J, togglesplit,"
 
-        # Move focus
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+          # Move focus
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
 
-        # Move window
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, l, movewindow, r"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, j, movewindow, d"
+          # Move window
+          "$mainMod SHIFT, h, movewindow, l"
+          "$mainMod SHIFT, l, movewindow, r"
+          "$mainMod SHIFT, k, movewindow, u"
+          "$mainMod SHIFT, j, movewindow, d"
 
-        "$mainMod CTRL, h, resizeactive, -60 0"
-        "$mainMod CTRL, l, resizeactive, 60 0"
-        "$mainMod CTRL, k, resizeactive, 0 -60"
-        "$mainMod CTRL, j, resizeactive, 0 60"
+          "$mainMod CTRL, h, resizeactive, -60 0"
+          "$mainMod CTRL, l, resizeactive, 60 0"
+          "$mainMod CTRL, k, resizeactive, 0 -60"
+          "$mainMod CTRL, j, resizeactive, 0 60"
 
-        # Screenshots
-        ", Print, exec, uwsm app -- hyprshot -m region"
-        "$mainMod, Print, exec, uwsm app -- hyprshot -m window"
-        "$mainMod SHIFT, Print, exec, uwsm app -- hyprshot -m output"
+          # Screenshots
+          ", Print, exec, uwsm app -- hyprshot -m region"
+          "$mainMod, Print, exec, uwsm app -- hyprshot -m window"
+          "$mainMod SHIFT, Print, exec, uwsm app -- hyprshot -m output"
 
-        # Color Picker
-        "$mainMod SHIFT, C, exec, uwsm app -- hyprpicker -a -f hex"
+          # Color Picker
+          "$mainMod SHIFT, C, exec, uwsm app -- hyprpicker -a -f hex"
 
-        # Apps
-        "$mainMod SHIFT, F, exec, uwsm app -- $browser"
-        "$mainMod SHIFT, Z, exec, uwsm app -- $editor"
+          # Apps
+          "$mainMod SHIFT, F, exec, uwsm app -- $browser"
+          "$mainMod SHIFT, Z, exec, uwsm app -- $editor"
 
-        # Others
-        ", XF86Reload, exec, hyprctl reload"
-        ", XF86Tools, exec, uwsm app -- $terminal -e cmus"
-        ", XF86Calculator, exec, uwsm app -- gnome-calculator"
-      ] ++ (
-        # Generators for workspaces 1-10
-        builtins.concatLists (
-          builtins.genList (x:
-            let
-              ws = x + 1;
-              key = if ws == 10 then "0" else toString ws;
-            in [
-              "$mainMod, ${key}, workspace, ${toString ws}"
-              "$mainMod SHIFT, ${key}, movetoworkspacesilent, ${toString ws}"
-            ]
-          ) 10
-        )
-      );
+          # Others
+          ", XF86Reload, exec, hyprctl reload"
+          ", XF86Tools, exec, uwsm app -- $terminal -e cmus"
+          ", XF86Calculator, exec, uwsm app -- gnome-calculator"
+        ]
+        ++ (
+          # Generators for workspaces 1-10
+          builtins.concatLists (
+            builtins.genList (
+              x: let
+                ws = x + 1;
+                key =
+                  if ws == 10
+                  then "0"
+                  else toString ws;
+              in [
+                "$mainMod, ${key}, workspace, ${toString ws}"
+                "$mainMod SHIFT, ${key}, movetoworkspacesilent, ${toString ws}"
+              ]
+            )
+            10
+          )
+        );
 
       # Mouse
       bindm = [

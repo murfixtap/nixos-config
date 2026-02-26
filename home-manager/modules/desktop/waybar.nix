@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.waybar = {
     enable = true;
     settings = {
@@ -6,11 +6,11 @@
         layer = "top";
         position = "top";
         height = 30;
-        output = [ "HDMI-A-1" "DVI-D-1" ];
+        output = ["HDMI-A-1" "DVI-D-1"];
 
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "hyprland/language" "pulseaudio" "battery" "tray" ];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["clock"];
+        modules-right = ["hyprland/language" "pulseaudio" "battery" "tray"];
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -41,18 +41,24 @@
           format = "{icon} {volume}%";
           format-muted = " ";
           format-icons = {
-            "default" = [ " " " " ];
+            "default" = [" " " "];
           };
           on-click = "pavucontrol";
         };
 
         "battery" = {
-          states = { warning = 30; critical = 1; };
+          states = {
+            warning = 30;
+            critical = 1;
+          };
           format = "{icon} {capacity}%";
-          format-icons = [ " " " " " " " " " " ];
+          format-icons = [" " " " " " " " " "];
         };
 
-        "tray" = { icon-size = 18; spacing = 1; };
+        "tray" = {
+          icon-size = 18;
+          spacing = 1;
+        };
       };
     };
   };

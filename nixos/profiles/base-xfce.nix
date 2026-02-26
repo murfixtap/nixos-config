@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ../modules/desktop/xfce.nix
     ../modules/core/audio.nix
