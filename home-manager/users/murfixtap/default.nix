@@ -1,8 +1,12 @@
-{ config, pkgs, user, stateVersion, ...}:
-let
-  screenshotsPath = "${config.xdg.userDirs.pictures}/screenshots";
-in
 {
+  config,
+  pkgs,
+  user,
+  stateVersion,
+  ...
+}: let
+  screenshotsPath = "${config.xdg.userDirs.pictures}/screenshots";
+in {
   imports = [
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/mako.nix
@@ -54,6 +58,7 @@ in
   home.packages = with pkgs; [
     nixd
     alejandra
+    docker-compose
     bat
     lsd
     zip
