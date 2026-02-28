@@ -11,6 +11,11 @@
       n = "nvim";
       cat = "bat";
 
+      # rmt.rs
+      rm = "rmt";
+      rmr = "rmt -r";
+      rmrf = "rmt -rf";
+
       # LSD
       ls = "lsd";
       la = "lsd -a";
