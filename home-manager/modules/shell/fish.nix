@@ -10,9 +10,12 @@
       # System
       n = "nvim";
       cat = "bat";
+      t = "task";
 
       # rmt.rs
       rm = "rmt";
+      rmtd = "rmt --td";
+      rmtf = "rmt --tf";
       rmr = "rmt -r";
       rmrf = "rmt -rf";
 
