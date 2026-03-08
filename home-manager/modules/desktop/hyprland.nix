@@ -1,4 +1,6 @@
-{...}: {
+{...}: let
+  screensPath = "$HOME/Pictures/screenshots";
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -18,16 +20,20 @@
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
         "QT_QPA_PLATFORM,wayland"
+        "MOZ_ENABLE_WAYLAND,1"
       ];
 
       monitor = [
         "HDMI-A-1,1920x1080@60,0x0,1"
-        "DVI-D-1,1920x1080@60,1920x0,1"
+        "DVI-D-1,1920x1080@60,1920x-420,1,transform,3"
       ];
 
       exec-once = [
         "uwsm app -- systemctl --user start hyprpolkitagent"
+        "uwsm app -- easyeffects --gapplication-service"
         "uwsm app -- hyprsunset --temperature 3000K"
+        "uwsm app -- wl-paste --type text --watch cliphist store"
+        "uwsm app -- wl-paste --type image --watch cliphist store"
         "uwsm app -- waybar"
         "uwsm app -- mako"
       ];
@@ -50,7 +56,7 @@
         blur.enabled = false;
       };
 
-      animations.enabled = false;
+      animations.enabled = true;
 
       input = {
         #keyboard
@@ -104,8 +110,8 @@
           "$mainMod, F, fullscreen,"
           "$mainMod, Q, killactive,"
           "$mainMod SHIFT, Q, exit,"
-          "$mainMod ALT, P, pseudo,"
-          "$mainMod ALT, J, togglesplit,"
+          "$mainMod SHIFT, O, pseudo,"
+          "$mainMod SHIFT, I, togglesplit,"
 
           # Move focus
           "$mainMod, h, movefocus, l"
@@ -119,15 +125,10 @@
           "$mainMod SHIFT, k, movewindow, u"
           "$mainMod SHIFT, j, movewindow, d"
 
-          "$mainMod CTRL, h, resizeactive, -60 0"
-          "$mainMod CTRL, l, resizeactive, 60 0"
-          "$mainMod CTRL, k, resizeactive, 0 -60"
-          "$mainMod CTRL, j, resizeactive, 0 60"
-
           # Screenshots
-          ", Print, exec, uwsm app -- hyprshot -m region"
-          "$mainMod, Print, exec, uwsm app -- hyprshot -m window"
-          "$mainMod SHIFT, Print, exec, uwsm app -- hyprshot -m output"
+          ", Print, exec, uwsm app -- hyprshot -m region -o ${screensPath}"
+          "$mainMod, Print, exec, uwsm app -- hyprshot -m window -o ${screensPath}"
+          "$mainMod SHIFT, Print, exec, uwsm app -- hyprshot -m output -o ${screensPath}"
 
           # Color Picker
           "$mainMod SHIFT, C, exec, uwsm app -- hyprpicker -a -f hex"
@@ -140,6 +141,9 @@
           ", XF86Reload, exec, hyprctl reload"
           ", XF86Tools, exec, uwsm app -- $terminal -e cmus"
           ", XF86Calculator, exec, uwsm app -- gnome-calculator"
+
+          # Clipboard history
+          "$mainMod SHIFT, V, exec, uwsm app -- cliphist list | wofi --show dmenu | cliphist decode | wl-copy"
         ]
         ++ (
           # Generators for workspaces 1-10
@@ -169,14 +173,14 @@
       # Repeatable
       binde = [
         # Resize windows
-        "$mainMod CTRL, h, resizeactive, -60 0"
-        "$mainMod CTRL, l, resizeactive, 60 0"
-        "$mainMod CTRL, k, resizeactive, 0 -60"
-        "$mainMod CTRL, j, resizeactive, 0 60"
+        "$mainMod CTRL, h, resizeactive, -20 0"
+        "$mainMod CTRL, l, resizeactive, 20 0"
+        "$mainMod CTRL, k, resizeactive, 0 -20"
+        "$mainMod CTRL, j, resizeactive, 0 20"
 
         # Hyprsunset (w/o uwsm, because it is hyprctl)
-        ", XF86Explorer, exec, hyprctl hyprsunset gamma -0.1"
-        ", XF86Mail, exec, hyprctl hyprsunset gamma +0.1"
+        ", XF86Explorer, exec, hyprctl hyprsunset gamma -5"
+        ", XF86Mail, exec, hyprctl hyprsunset gamma +5"
         ", XF86HomePage, exec, hyprctl hyprsunset temperature -100"
         ", XF86Search, exec, hyprctl hyprsunset temperature +100"
       ];

@@ -1,12 +1,8 @@
 {
-  config,
   pkgs,
   user,
   stateVersion,
   ...
-}: let
-  screenshotsPath = "${config.xdg.userDirs.pictures}/screenshots";
-in {
   imports = [
     ../../modules/desktop/waybar
     ../../modules/desktop/hyprland.nix
@@ -36,9 +32,6 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       TERMINAL = "kitty";
-      XDG_BIN_HOME = "$HOME/.local/bin";
-      XDG_SCREENSHOTS_DIR = screenshotsPath;
-      HYPRSHOT_DIR = screenshotsPath;
     };
   };
 
