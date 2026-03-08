@@ -1,6 +1,6 @@
 {
   inputs,
-  user,
+  flakePath,
   ...
 }: {
   imports = [
@@ -13,7 +13,7 @@
     viAlias = true;
     vimAlias = true;
 
-    globals.mapleader = " "; #space
+    globals.mapleader = " "; # space
 
     opts = {
       # general settings
@@ -81,7 +81,7 @@
       {
         mode = "n";
         key = "<leader>q";
-        action = ":q<CR>";
+        action = ":qa<CR>";
         options.silent = false;
       }
 
@@ -186,17 +186,44 @@
     ];
 
     plugins = {
+      treesitter = {
+        enable = true;
+        settings = {
+          ensure_installed = [
+            "nix"
+            "python"
+            "css"
+            "scss"
+            "html"
+            "javascript"
+            "lua"
+          ];
+          highlight.enable = true;
+        };
+      };
+
       lsp = {
         enable = true;
         servers = {
+          python.enable = true;
+          cssls.enable = true;
+
           nixd = {
             enable = true;
             settings = {
               nixpkgs = {
-                expr = "import <nixpkgs> {}";
+                expr = "import <nixpkgs> { }";
+              };
+              formatting = {
+                command = ["alejandra"];
               };
               options = {
-                nixos.expr = "(builtins.getFlake \"/home/${user}/nixos-config\").nixosConfigurations.luna.options";
+                nixos = {
+                  expr = "(builtins.getFlake \"${flakePath}\").nixosConfigurations.luna.options";
+                };
+                "home-manager" = {
+                  expr = "(builtins.getFlake \"${flakePath}\").nixosConfigurations.luna.options.home-manager.users.type.getSubOptions [ ]";
+                };
               };
             };
           };
@@ -226,6 +253,11 @@
         settings = {
           formatters_by_ft = {
             nix = ["alejandra"]; # or "nixpkgs-fmt"
+            python = ["black"];
+            css = ["prettier"];
+            scss = ["prettier"];
+            html = ["prettier"];
+            javascript = ["prettier"];
           };
           format_on_save = {
             lsp_fallback = true;
@@ -248,7 +280,9 @@
 
         settings = {
           defaults = {
-            layout_config = {prompt_position = "top";};
+            layout_config = {
+              prompt_position = "top";
+            };
             sorting_strategy = "ascending";
           };
           pickers.find_files.hidden = true;
@@ -342,7 +376,6 @@
                 action = "qa";
               }
             ];
-            footer = ["Tip: press ? for which-key"];
           };
         };
       };
