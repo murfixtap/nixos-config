@@ -12,6 +12,7 @@
     ../../modules/editors/kitty.nix
     ../../modules/editors/nixvim.nix
     ../../modules/editors/zed.nix
+    ../../modules/programs/cava.nix
     ../../modules/programs/firefox.nix
     ../../modules/programs/git.nix
     ../../modules/programs/yazi.nix
