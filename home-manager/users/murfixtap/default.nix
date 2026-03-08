@@ -11,6 +11,7 @@ in {
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/mako.nix
     ../../modules/desktop/waybar.nix
+    ../../modules/desktop/stylix.nix
     ../../modules/desktop/wofi.nix
     ../../modules/editors/kitty.nix
     ../../modules/editors/nixvim.nix
