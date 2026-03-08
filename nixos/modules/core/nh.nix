@@ -1,7 +1,7 @@
-{user, ...}: {
+{flakePath, ...}: {
   programs.nh = {
     enable = true;
-    flake = "/home/${user}/nixos-config";
+    flake = "${flakePath}";
 
     clean = {
       enable = true;
