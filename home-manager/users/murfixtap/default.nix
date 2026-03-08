@@ -3,6 +3,7 @@
   user,
   stateVersion,
   ...
+}: {
   imports = [
     ../../modules/desktop/waybar
     ../../modules/desktop/hyprland.nix
@@ -51,24 +52,74 @@
   };
 
   home.packages = with pkgs; [
+    # --- Development & Nix ---
     nixd
     alejandra
+    nodePackages.prettier
     docker-compose
-    bat
-    lsd
+    repomix
+
+    # --- Basic CLI Utilities ---
+    bat # `cat` alternative with syntax highlighting
+    lsd # `ls` alternative with icons
+    ripgrep # fast recursive grep
+    fd # simple alternative to `find`
+    fzf # fuzzy finder
+    file # determine file type
+    curl
+    wget
+    jq # JSON processor
+    fastfetch # system information tool
+    poppler # PDF utilities (pdfimages, pdftotext, etc.)
+
+    # --- System Monitoring ---
+    htop
+    btop
+
+    # --- File Management (GUI & Archives) ---
+    thunar
+    thunar-volman
+    tumbler # thumbnail service for Thunar
     zip
     unzip
     p7zip
-    ripgrep
-    htop
-    btop
-    curl
-    wget
-    repomix
+
+    # --- Multimedia & Graphics ---
+    cmus # console audio player
+    easyeffects # audio processing
+    ffmpeg
+    gimp
+    mpv
+    imv # lightweight image viewer
+    playerctl # media player controller
+    pear-desktop
     wiremix
-    ayugram-desktop
+
+    # --- Productivity ---
     bitwarden-desktop
+    calcure # TUI calendar / planner
+    obsidian
+    taskwarrior3 # task management
+
+    # --- Communication ---
+    ayugram-desktop
+    chatterino7
+
+    # --- Fun & ASCII Art ---
+    asciiquarium
+    bastet # crazy tetris
+    bonsai # grow a tree in your terminal
+    clock-rs # terminal clock
+    cmatrix
+    cowsay
+    fortune
+    jp2a # convert images to ASCII
+    nudoku # Sudoku
+    peaclock # colorful terminal clock
+    pipes-rs # animated pipes
+    tetris # classic tetris
   ];
 
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 }
