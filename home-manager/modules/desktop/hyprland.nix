@@ -56,7 +56,7 @@ in {
         blur.enabled = false;
       };
 
-      animations.enabled = true;
+      animations.enabled = false;
 
       input = {
         #keyboard
