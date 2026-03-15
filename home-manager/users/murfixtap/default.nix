@@ -54,7 +54,7 @@
   };
 
   home.packages = with pkgs; [
-    # --- Development & Nix ---
+    # Development
     nil
     nixd
     alejandra
@@ -63,67 +63,88 @@
     ruff
     nodePackages.prettier
     color-lsp
-    docker-compose
     repomix
+    docker-compose
 
-    # --- Basic CLI Utilities ---
-    bat # `cat` alternative with syntax highlighting
-    lsd # `ls` alternative with icons
-    ripgrep # fast recursive grep
-    fd # simple alternative to `find`
-    fzf # fuzzy finder
-    file # determine file type
+    # CLI Core
+    bat
+    lsd
+    ripgrep
+    fd
+    fzf
+    file
+    jq
+    poppler
+
+    # System & Network
+    htop
+    fastfetch
     curl
     wget
-    jq # JSON processor
-    fastfetch # system information tool
-    poppler # PDF utilities (pdfimages, pdftotext, etc.)
+    yt-dlp
+    syncthing
 
-    # --- System Monitoring ---
-    htop
+    # TUI Workspace
+    zellij
+    calcure
+    taskwarrior3
+    cmus
+    termusic
 
-    # --- File Management (GUI & Archives) ---
+    # Terminal Visuals
+    clock-rs
+    peaclock
+    asciiquarium
+    cbonsai
+    cmatrix
+    pipes-rs
+    jp2a
+    cowsay
+    fortune
+
+    # Terminal Games
+    bastet
+    nudoku
+    tetris
+
+    # File Management
     thunar
     thunar-volman
-    tumbler # thumbnail service for Thunar
+    tumbler
     zip
     unzip
     p7zip
 
-    # --- Multimedia & Graphics ---
-    cmus # console audio player
-    easyeffects # audio processing
-    ffmpeg
-    gimp
-    mpv
-    imv # lightweight image viewer
-    playerctl # media player controller
-    pear-desktop
+    # Audio Setup
+    pavucontrol
+    easyeffects
+    qpwgraph
     wiremix
 
-    # --- Productivity ---
-    bitwarden-desktop
-    calcure # TUI calendar / planner
-    obsidian
-    taskwarrior3 # task management
+    # Media & Graphics
+    mpv
+    imv
+    gimp
+    inkscape
+    ffmpeg
+    kid3
+    playerctl
 
-    # --- Communication ---
+    # Desktop Apps
+    obsidian
+    bitwarden-desktop
+    localsend
+    qbittorrent
     ayugram-desktop
     chatterino7
+    pear-desktop
+    gnome-calculator
 
-    # --- Fun & ASCII Art ---
-    asciiquarium
-    bastet # crazy tetris
-    bonsai # grow a tree in your terminal
-    clock-rs # terminal clock
-    cmatrix
-    cowsay
-    fortune
-    jp2a # convert images to ASCII
-    nudoku # Sudoku
-    peaclock # colorful terminal clock
-    pipes-rs # animated pipes
-    tetris # classic tetris
+    # Wine
+    wineWow64Packages.staging
+    winetricks
+    wineasio
+    bottles
   ];
 
   programs.home-manager.enable = true;
