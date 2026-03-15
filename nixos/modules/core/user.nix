@@ -12,6 +12,7 @@
       "video"
       "audio"
       "docker"
+      "render"
     ];
   };
 

@@ -61,7 +61,7 @@ in {
       input = {
         #keyboard
         kb_layout = "us,ru";
-        kb_options = "grp:caps_toggle";
+        kb_options = "grp:caps_toggle,compose:ralt";
         repeat_rate = 35;
         repeat_delay = 200;
 

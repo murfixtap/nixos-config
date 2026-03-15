@@ -17,7 +17,15 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd \"uwsm start -e -D Hyprland hyprland.desktop\"";
+        command =
+          "${pkgs.tuigreet}/bin/tuigreet "
+          + "--time "
+          + "--remember "
+          + "--remember-session "
+          + "--asterisks "
+          + "--window-padding 2 "
+          + "--container-padding 2 "
+          + "--cmd 'uwsm start -e -D Hyprland hyprland.desktop'";
         user = "greeter";
       };
     };
