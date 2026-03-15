@@ -84,9 +84,9 @@ in {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/traduzir-paginas-web/latest.xpi";
           installation_mode = "force_installed";
         };
-        # RU Spellchecking Dictionary
-        "ru@dictionaries.addons.mozilla.org" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/russian-spellchecking-dic-3703/latest.xpi";
+        # Russian Hunspell dictionary
+        "hunspell-ru@dictionaries.addons.mozilla.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/russian-hunspell-dictionary/latest.xpi";
           installation_mode = "force_installed";
         };
         # SponsorBlock
@@ -99,9 +99,19 @@ in {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi";
           installation_mode = "force_installed";
         };
-        # 7TV
-        "moz-addon-prod@7tv.app" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/7tv-extension/latest.xpi";
+        # FrankerFaceZ
+        "frankerfacez@frankerfacez.com" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/frankerfacez/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        # WhatFont
+        "{dcb8caa2-63fa-41aa-a508-a45c5990ebdd}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/zjm-whatfont/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        # cookies.txt
+        "{12cf650b-1822-40aa-bff0-996df6948878}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/cookies-txt/latest.xpi";
           installation_mode = "force_installed";
         };
       };
