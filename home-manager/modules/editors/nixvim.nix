@@ -320,7 +320,7 @@
       lualine = {
         enable = true;
         settings.options = {
-          theme = "dracula";
+          theme = "catppuccin";
           icons_enabled = true;
         };
       };
@@ -383,9 +383,9 @@
       web-devicons.enable = true;
     };
 
-    colorschemes.dracula-nvim = {
+    colorschemes.catppuccin = {
       enable = true;
-      settings.style = "dracula";
+      settings.flavour = "macchiato";
     };
   };
 }

@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
     image = pkgs.fetchurl {
       url = "https://w.wallhaven.cc/full/yq/wallhaven-yqev5d.jpg";
@@ -51,6 +51,7 @@
       neovim.enable = false;
       waybar.enable = false;
       wofi.enable = false;
+      btop.enable = false;
       # hyprland.enable = false;
       # hyprlock.enable = false;
       firefox.profileNames = ["default"];

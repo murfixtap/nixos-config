@@ -13,6 +13,7 @@
     ../../modules/editors/kitty.nix
     ../../modules/editors/nixvim.nix
     ../../modules/editors/zed.nix
+    ../../modules/programs/btop.nix
     ../../modules/programs/cava.nix
     ../../modules/programs/firefox.nix
     ../../modules/programs/git.nix
@@ -74,7 +75,6 @@
 
     # --- System Monitoring ---
     htop
-    btop
 
     # --- File Management (GUI & Archives) ---
     thunar
