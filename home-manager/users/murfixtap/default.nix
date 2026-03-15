@@ -6,10 +6,10 @@
 }: {
   imports = [
     ../../modules/desktop/waybar
+    ../../modules/desktop/wofi
     ../../modules/desktop/hyprland.nix
     ../../modules/desktop/mako.nix
     ../../modules/desktop/stylix.nix
-    ../../modules/desktop/wofi.nix
     ../../modules/editors/kitty.nix
     ../../modules/editors/nixvim.nix
     ../../modules/editors/zed.nix
