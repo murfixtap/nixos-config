@@ -8,5 +8,18 @@
       "toml"
       "xml"
     ];
+    userSettings = {
+      languages = {
+        Python = {
+          language_servers = ["basedpyright" "ruff"];
+          formatter = {
+            external = {
+              command = "ruff";
+              arguments = ["-"];
+            };
+          };
+        };
+      };
+    };
   };
 }

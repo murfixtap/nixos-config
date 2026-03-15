@@ -54,9 +54,14 @@
 
   home.packages = with pkgs; [
     # --- Development & Nix ---
+    nil
     nixd
     alejandra
+    python3
+    basedpyright
+    ruff
     nodePackages.prettier
+    color-lsp
     docker-compose
     repomix
 

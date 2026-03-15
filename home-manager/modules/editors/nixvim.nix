@@ -208,6 +208,30 @@
           python.enable = true;
           cssls.enable = true;
 
+          basedpyright = {
+            enable = true;
+            settings = {
+              basedpyright = {
+                analysis = {
+                  typeCheckingMode = "basic";
+                  autoImportCompletions = true;
+                  useLibraryCodeForTypes = true;
+                  diagnosticMode = "workspace";
+                };
+              };
+            };
+          };
+
+          ruff = {
+            enable = true;
+            settings = {
+              ruff = {
+                lint.enable = true;
+                format.enable = true;
+              };
+            };
+          };
+
           nixd = {
             enable = true;
             settings = {
@@ -253,7 +277,7 @@
         settings = {
           formatters_by_ft = {
             nix = ["alejandra"]; # or "nixpkgs-fmt"
-            python = ["black"];
+            python = ["ruff"];
             css = ["prettier"];
             scss = ["prettier"];
             html = ["prettier"];
