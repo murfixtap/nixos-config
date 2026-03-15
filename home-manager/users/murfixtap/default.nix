@@ -17,6 +17,7 @@
     ../../modules/programs/cava.nix
     ../../modules/programs/firefox.nix
     ../../modules/programs/git.nix
+    ../../modules/programs/qutebrowser.nix
     ../../modules/programs/yazi.nix
     ../../modules/shell/starship
     ../../modules/shell/fish.nix
