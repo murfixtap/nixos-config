@@ -7,9 +7,7 @@
         layer = "top";
         position = "top";
         height = 30;
-        margin-top = 5;
-        margin-left = 5;
-        margin-right = 5;
+        margin = "5 5 0 5";
         spacing = 0;
 
         modules-left = ["hyprland/workspaces"];
@@ -22,9 +20,8 @@
           show-special = true;
           special-visible-only = false;
           all-outputs = false;
+
           persistent-workspaces = {
-            # "1-7" = "HDMI-A-1";
-            # "8-10" = "DVI-D-1";
             "HDMI-A-1" = ["1" "2" "3" "4" "5" "6" "7"];
             "DVI-D-1" = ["8" "9" "10"];
           };
@@ -47,11 +44,13 @@
         "cpu" = {
           interval = 10;
           format = " {}%";
+          on-click = "uwsm app -- kitty -e btop";
         };
 
         "memory" = {
           interval = 10;
           format = " {used:0.1f}G/{total:0.1f}G";
+          on-click = "uwsm app -- kitty -e btop";
         };
 
         "hyprland/language" = {
@@ -67,6 +66,7 @@
           format = " {volume}%";
           format-muted = " muted";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-click-middle = "uwsm app -- easyeffects";
           on-click-right = "uwsm app -- kitty -e wiremix";
         };
 
@@ -81,7 +81,7 @@
 
         "tray" = {
           icon-size = 18;
-          spacing = 1;
+          spacing = 10;
         };
       }
     ];
