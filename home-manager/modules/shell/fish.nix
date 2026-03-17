@@ -31,6 +31,9 @@
       nou = "nh os switch --update";
       nhm = "nh home switch";
 
+      # restart the audio server
+      rsa = "easyeffects -q; pkill -9 easyeffects; systemctl --user restart pipewire wireplumber; sleep 3; easyeffects --service-mode &";
+
       # --- Git ---
       # Main
       g = "git";
