@@ -30,7 +30,7 @@ in {
 
       exec-once = [
         "uwsm app -- systemctl --user start hyprpolkitagent"
-        "uwsm app -- easyeffects --gapplication-service"
+        "sleep 5 && uwsm app -- easyeffects --service-mode"
         "uwsm app -- hyprsunset --temperature 3000K"
         "uwsm app -- wl-paste --type text --watch cliphist store"
         "uwsm app -- wl-paste --type image --watch cliphist store"
