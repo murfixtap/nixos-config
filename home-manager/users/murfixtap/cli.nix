@@ -3,6 +3,7 @@
     ../../modules/editors/nixvim
     ../../modules/programs/btop.nix
     ../../modules/programs/cava.nix
+    ../../modules/programs/fastfetch.nix
     ../../modules/programs/git.nix
     ../../modules/programs/yazi.nix
     ../../modules/services/syncthing.nix
@@ -35,7 +36,6 @@
     poppler
 
     # System
-    fastfetch
     htop
     curl
     wget
