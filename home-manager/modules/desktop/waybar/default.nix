@@ -1,4 +1,6 @@
-{...}: {
+{flakePath, ...}: let
+  rofiPath = "${flakePath}/home-manager/modules/desktop/rofi";
+in {
   programs.waybar = {
     enable = true;
     style = ./style.css;
@@ -10,9 +12,15 @@
         margin = "5 5 0 5";
         spacing = 0;
 
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["clock" "custom/uptime"];
-        modules-right = ["cpu" "memory" "hyprland/language" "pulseaudio" "tray"];
+        modules-left = ["custom/menu" "hyprland/workspaces"];
+        modules-center = ["clock" "custom/uptime" "cpu" "memory"];
+        modules-right = ["custom/clipboard" "hyprland/language" "pulseaudio" "tray" "custom/power"];
+
+        "custom/menu" = {
+          format = "<span foreground='#89abf4'></span>";
+          min-length = 2;
+          on-click = "uwsm app -- rofi -show drun -show-icons";
+        };
 
         "hyprland/workspaces" = {
           format = "{icon}";
@@ -82,6 +90,12 @@
         "tray" = {
           icon-size = 18;
           spacing = 10;
+        };
+
+        "custom/power" = {
+          format = "<span foreground='#ed8796'></span>";
+          min-length = 2;
+          on-click = "uwsm app -- rofi -show p -modi p:rofi-power-menu -theme ${rofiPath}/powermenu.rasi";
         };
       }
     ];

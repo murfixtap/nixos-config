@@ -41,6 +41,7 @@ window#waybar {
 }
 
 /* Common styles for all modules */
+#custom-menu,
 #workspaces,
 #clock,
 #custom-uptime,
@@ -49,7 +50,8 @@ window#waybar {
 #language,
 #pulseaudio,
 #battery,
-#tray {
+#tray,
+#custom-power {
   background-color: @base;
   color: @text;
   border-radius: 15px;

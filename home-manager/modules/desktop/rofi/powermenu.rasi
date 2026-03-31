@@ -1,0 +1,15 @@
+@theme "catppuccin"
+
+configuration {
+  prompt: " Power";
+  sidebar-mode: false;
+}
+
+window {
+  width: 400px;
+}
+
+listview {
+  column: 2;
+  lines: 3;
+}
