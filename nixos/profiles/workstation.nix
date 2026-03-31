@@ -5,6 +5,7 @@
     ../modules/core/boot.nix
     ../modules/core/firewall.nix
     ../modules/core/fonts.nix
+    ../modules/core/gaming.nix
     ../modules/core/networking.nix
     ../modules/core/nh.nix
     ../modules/core/nix.nix
