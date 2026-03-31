@@ -27,6 +27,7 @@
     user = "murfixtap";
     stateVersion = "25.11";
     flakePath = "/home/${user}/nixos-config";
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       luna = nixpkgs.lib.nixosSystem {
@@ -51,6 +52,17 @@
             };
           }
         ];
+      };
+    };
+
+    homeConfigurations = {
+      ${user} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./home-manager/users/murfixtap/default.nix];
+        extraSpecialArgs = {
+          inherit inputs user stateVersion flakePath;
+          hostname = "luna";
+        };
       };
     };
   };
