@@ -1,16 +1,11 @@
 {...}: {
   programs.fish = {
-    enable = true;
-
-    shellInit = ''
-      set -g fish_greeting
-    '';
-
     shellAbbrs = {
       # System
       n = "nvim";
       cat = "bat";
       t = "task";
+      makex = "chown +x";
 
       # rmt.rs
       rm = "rmt";
@@ -32,7 +27,9 @@
       nhm = "nh home switch";
 
       # restart the audio server
-      rsa = "easyeffects -q; pkill -9 easyeffects; systemctl --user restart pipewire wireplumber; sleep 3; easyeffects --service-mode &";
+      rsa = "systemctl --user stop easyeffects.service && \
+      systemctl --user restart wireplumber pipewire pipewire-pulse && \
+      systemctl --user restart easyeffects.service";
 
       # --- Git ---
       # Main
