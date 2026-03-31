@@ -41,7 +41,6 @@ in {
           Value = "strict";
           Status = "locked";
         };
-        "extensions.pocket.enabled" = lock-false;
         "extensions.screenshots.disabled" = lock-false;
         "browser.topsites.contile.enabled" = lock-false;
         "browser.formfill.enable" = lock-false;
@@ -63,15 +62,10 @@ in {
       # Valid strings for installation_mode are "allowed", "blocked",
       # "force_installed" and "normal_installed".
       ExtensionSettings = {
-        "*".installation_mode = "blocked";
+        # "*".installation_mode = "blocked";
         # uBlock Origin
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "force_installed";
-        };
-        # Privacy Badger
-        "jid1-MnnxcxisBPnSXQ@jetpack" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
           installation_mode = "force_installed";
         };
         # Dark Reader
@@ -120,24 +114,45 @@ in {
     profiles.default.search = {
       force = true;
       default = "ddg";
-      engines."Nix Packages" = {
-        urls = [
-          {
-            template = "https://search.nixos.org/packages";
-            params = [
-              {
-                name = "channel";
-                value = "unstable";
-              }
-              {
-                name = "query";
-                value = "{searchTerms}";
-              }
-            ];
-          }
-        ];
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = ["@np"];
+      engines = {
+        "Nix Packages" = {
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "channel";
+                  value = "unstable";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@np"];
+        };
+        "NixOS Options" = {
+          urls = [
+            {
+              template = "https://search.nixos.org/options";
+              params = [
+                {
+                  name = "channel";
+                  value = "unstable";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@no"];
+        };
       };
     };
   };
