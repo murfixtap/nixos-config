@@ -10,6 +10,7 @@
     ../modules/core/nh.nix
     ../modules/core/nix.nix
     ../modules/core/ollama.nix
+    ../modules/core/ssh.nix
     ../modules/core/timezone.nix
     ../modules/core/user.nix
     ../modules/core/virtualisation.nix
