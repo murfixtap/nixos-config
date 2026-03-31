@@ -46,10 +46,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    clipse
     cliphist
     wl-clipboard
     hyprpolkitagent
     hyprsunset
+    hyprlock
     hyprshot
     hyprpicker
   ];

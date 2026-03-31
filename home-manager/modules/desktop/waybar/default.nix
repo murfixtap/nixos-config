@@ -8,8 +8,8 @@ in {
       {
         layer = "top";
         position = "top";
-        height = 30;
-        margin = "5 5 0 5";
+        height = 32;
+        margin = "5px 5px 0 5px";
         spacing = 0;
 
         modules-left = ["custom/menu" "hyprland/workspaces"];
@@ -23,7 +23,7 @@ in {
         };
 
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "";
           disable-scroll = true;
           show-special = true;
           special-visible-only = false;
@@ -40,6 +40,21 @@ in {
           format-alt = " {:%a, %b %d, %Y}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           on-click-right = "uwsm app -- kitty -e calcure";
+
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+
+            format = {
+              months = "<span color='#eed49f'><b>{}</b></span>";
+              days = "<span color='#cad3f5'><b>{}</b></span>";
+              weeks = "<span color='#a6da95'><b>W{}</b></span>";
+              weekdays = "<span color='#ee99a0'><b>{}</b></span>";
+              today = "<span color='#ed8796'><b><u>{}</u></b></span>";
+            };
+          };
         };
 
         "custom/uptime" = {
@@ -49,15 +64,22 @@ in {
           tooltip = false;
         };
 
+        "custom/clipboard" = {
+          "format" = "";
+          "on-click" = "uwsm app -- kitty --class clipse -e clipse";
+          "tooltip" = false;
+        };
+
         "cpu" = {
-          interval = 10;
-          format = " {}%";
+          interval = 5;
+          format = " {usage}%";
           on-click = "uwsm app -- kitty -e btop";
         };
 
         "memory" = {
-          interval = 10;
-          format = " {used:0.1f}G/{total:0.1f}G";
+          interval = 5;
+          format = " {}%";
+          tooltip-format = "{used:0.1f}G used out of {total:0.1f}G";
           on-click = "uwsm app -- kitty -e btop";
         };
 
@@ -81,7 +103,7 @@ in {
         "battery" = {
           states = {
             warning = 30;
-            critical = 1;
+            critical = 10;
           };
           format = "{icon} {capacity}%";
           format-icons = ["" "" "" "" ""];

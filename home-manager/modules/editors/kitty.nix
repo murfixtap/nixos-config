@@ -8,7 +8,6 @@
       input_delay = 2;
       sync_to_monitor = "yes";
       update_check_interval = 0;
-      linux_display_server = "wayland";
     };
   };
 }

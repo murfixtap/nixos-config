@@ -45,6 +45,7 @@ window#waybar {
 #workspaces,
 #clock,
 #custom-uptime,
+#custom-clipboard,
 #cpu,
 #memory,
 #language,
@@ -65,10 +66,10 @@ window#waybar {
 }
 
 #workspaces button {
-  background-color: @surface1;
+  background-color: @overlay0;
   color: @text;
   border-radius: 15px;
-  padding: 0 8px;
+  padding: 0 5px;
   margin: 4px 4px;
 }
 
@@ -79,21 +80,21 @@ window#waybar {
 }
 
 #workspaces button.empty {
-  color: @overlay1;
+  background-color: @surface1;
 }
 
 #workspaces button.urgent {
-  color: @red;
+  background-color: @red;
 }
 
 #workspaces button:hover {
-  background: @blue;
+  background-color: @blue;
   color: @surface0;
 }
 
 /* Tooltip styling */
 tooltip {
-  background: @base;
+  background-color: @base;
   border: 3px solid;
   border-radius: 5px;
   border-color: @blue;

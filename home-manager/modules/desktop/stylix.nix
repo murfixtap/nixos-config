@@ -11,8 +11,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
     image = pkgs.fetchurl {
-      url = "https://w.wallhaven.cc/full/yq/wallhaven-yqev5d.jpg";
-      sha256 = "0kmm33jsmp3qx5xzph5bmvjdd5zp84vvr64rp8clvvz8h0va6min";
+      url = "https://w.wallhaven.cc/full/m9/wallhaven-m91yg1.jpg"; # https://whvn.cc/m91yg1
+      sha256 = "0vw6qasrg1514km0bahdj8m1fmip8hhd2s5p2asv8dv4yfh0dya2";
     };
 
     fonts = {
@@ -55,6 +55,7 @@
       # hyprland.enable = false;
       # hyprlock.enable = false;
       firefox.profileNames = ["default"];
+      librewolf.profileNames = ["default"];
     };
   };
 }

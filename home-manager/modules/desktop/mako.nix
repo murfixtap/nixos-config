@@ -3,9 +3,6 @@
     enable = true;
     settings = {
       #appearance
-      # background-color = "";
-      # text-color = "";
-      # border-color = "";
       border-size = 3;
       width = 300;
       padding = "10";
