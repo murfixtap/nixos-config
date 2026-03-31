@@ -1,6 +1,4 @@
 {...}: {
-  networking.networkmanager = {
-    enable = true;
-    waitOnline.enable = false;
-  };
+  networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 }

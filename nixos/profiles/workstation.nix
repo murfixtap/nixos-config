@@ -9,8 +9,10 @@
     ../modules/core/networking.nix
     ../modules/core/nh.nix
     ../modules/core/nix.nix
+    ../modules/core/ollama.nix
     ../modules/core/timezone.nix
     ../modules/core/user.nix
+    ../modules/core/virtualisation.nix
     ../modules/core/zram.nix
   ];
 
