@@ -22,7 +22,6 @@
     # Audio/Video
     pavucontrol
     playerctl
-    qpwgraph
     mpv
     imv
 
