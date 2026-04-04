@@ -36,7 +36,7 @@ in {
         };
 
         "clock" = {
-          format = "{:%I:%M %p}";
+          format = "{:%Y.%m.%d | %I:%M %p}";
           format-alt = " {:%a, %b %d, %Y}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           on-click-right = "uwsm app -- kitty -e calcure";
