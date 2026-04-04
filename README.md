@@ -23,10 +23,4 @@ sudo nixos-rebuild switch --flake ~/nixos-config#luna
 
 ## Screenshots:
 
-![Desktop](screenshots/1.png)
-
-![Neovim](screenshots/2.png)
-
-![Cava](screenshots/3.png)
-
-![Rofi](screenshots/4.png)
+![All screenshots](screenshots/all.png)
